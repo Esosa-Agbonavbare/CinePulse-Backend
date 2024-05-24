@@ -1,0 +1,6 @@
+@CinePulse.API_HostAddress = http://localhost:5187
+
+GET {{CinePulse.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
