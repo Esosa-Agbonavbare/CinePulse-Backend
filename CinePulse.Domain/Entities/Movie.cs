@@ -22,7 +22,7 @@
         public string ImdbVotes { get; set; }
         public string ImdbID { get; set; }
         public string Type { get; set; }
-        public string IotalSeasons { get; set; }
+        public string TotalSeasons { get; set; }
         public string Response { get; set; }
     }
 }

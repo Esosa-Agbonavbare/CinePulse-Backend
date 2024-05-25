@@ -1,4 +1,5 @@
-﻿using CinePulse.Domain;
+﻿using CinePulse.Application.DTOs;
+using CinePulse.Domain;
 
 namespace CinePulse.Application.Services.Interface
 {
