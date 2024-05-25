@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinePulse.API", "CinePulse.API\CinePulse.API.csproj", "{F9694BDC-181B-45C0-A6D6-2120F1D05FAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinePulse.API", "CinePulse.API\CinePulse.API.csproj", "{F9694BDC-181B-45C0-A6D6-2120F1D05FAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinePulse.Domain", "CinePulse.Domain\CinePulse.Domain.csproj", "{62C97FEB-4E97-4433-8465-7081FC8BEE7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinePulse.Domain", "CinePulse.Domain\CinePulse.Domain.csproj", "{62C97FEB-4E97-4433-8465-7081FC8BEE7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinePulse.Application", "CinePulse.Application\CinePulse.Application.csproj", "{2F7D0C11-589C-458F-A985-1922453AAF10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinePulse.Application", "CinePulse.Application\CinePulse.Application.csproj", "{2F7D0C11-589C-458F-A985-1922453AAF10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1CA96DCC-FB99-4FF2-A705-6B5A7C2DEEFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinePulse.ApplicationTest", "CinePulse.ApplicationTest\CinePulse.ApplicationTest.csproj", "{511B0718-988E-4B68-BCB8-E1F55A30C6A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +31,16 @@ Global
 		{2F7D0C11-589C-458F-A985-1922453AAF10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F7D0C11-589C-458F-A985-1922453AAF10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F7D0C11-589C-458F-A985-1922453AAF10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{511B0718-988E-4B68-BCB8-E1F55A30C6A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{511B0718-988E-4B68-BCB8-E1F55A30C6A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{511B0718-988E-4B68-BCB8-E1F55A30C6A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{511B0718-988E-4B68-BCB8-E1F55A30C6A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{511B0718-988E-4B68-BCB8-E1F55A30C6A1} = {1CA96DCC-FB99-4FF2-A705-6B5A7C2DEEFA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A75FBC59-17F5-4F7D-9F42-DA5AEBDA284E}

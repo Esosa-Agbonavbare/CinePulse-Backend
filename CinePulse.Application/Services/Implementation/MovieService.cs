@@ -11,6 +11,12 @@ namespace CinePulse.Application.Services.Implementation
         private readonly string _apiKey = "899ec4f7";
         private static readonly List<string> _searchHistory = [];
         private static readonly object _lock = new();
+        private readonly HttpClient _httpClient;
+
+        public MovieService(HttpClient httpClient)
+        {
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        }
 
         public async Task<ApiResponse<MovieResponseDto>> GetMovieByTitleAsync(string title)
         {
@@ -24,15 +30,15 @@ namespace CinePulse.Application.Services.Implementation
             }
             catch (HttpRequestException ex)
             {
-                return new ApiResponse<MovieResponseDto>(false, StatusCodes.Status500InternalServerError, "An error occurred while processing your request", new List<string> { ex.Message });
+                return new ApiResponse<MovieResponseDto>(false, StatusCodes.Status500InternalServerError, "An error occurred while processing your request", [ex.Message]);
             }
             catch (JsonException ex)
             {
-                return new ApiResponse<MovieResponseDto>(false, StatusCodes.Status500InternalServerError, "Error parsing the movie data", new List<string> { ex.Message });
+                return new ApiResponse<MovieResponseDto>(false, StatusCodes.Status500InternalServerError, "Error parsing the movie data", [ex.Message]);
             }
             catch (Exception ex)
             {
-                return new ApiResponse<MovieResponseDto>(false, StatusCodes.Status500InternalServerError, "An unexpected error occurred", new List<string> { ex.Message });
+                return new ApiResponse<MovieResponseDto>(false, StatusCodes.Status500InternalServerError, "An unexpected error occurred", [ex.Message]);
             }
         }
 
@@ -44,20 +50,20 @@ namespace CinePulse.Application.Services.Implementation
                 {
                     if (_searchHistory.Count < 1)
                     {
-                        return Task.FromResult(new ApiResponse<IEnumerable<string>>(false, StatusCodes.Status404NotFound, "Search history not found"));
+                        return Task.FromResult(new ApiResponse<IEnumerable<string>>(true, StatusCodes.Status200OK, "Search history is empty", null, null));
                     }
-
                     var result = _searchHistory.Take(5).ToList();
                     return Task.FromResult(new ApiResponse<IEnumerable<string>>(true, StatusCodes.Status200OK, "Search history retrieved successfully", result, null));
                 }
             }
             catch (Exception ex)
             {
-                return Task.FromResult(new ApiResponse<IEnumerable<string>>(false, StatusCodes.Status500InternalServerError, "An error occurred while processing your request", new List<string> { ex.Message }));
+                return Task
+                    .FromResult(new ApiResponse<IEnumerable<string>>(false, StatusCodes.Status500InternalServerError, "An error occurred while processing your request", [ex.Message]));
             }
         }
 
-        private static void AddToSearchHistory(string title)
+        public static void AddToSearchHistory(string title)
         {
             lock (_lock)
             {
